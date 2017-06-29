@@ -1,0 +1,17 @@
+{
+  "presets": [
+    "es2015",
+    "stage-3",
+    "react"
+  ],
+  "plugins": [
+    "transform-class-properties",
+    "transform-decorators",
+    "transform-async-to-generator"
+  ],
+  "ignore": [
+    "node_modules/*",
+    "dist/*",
+    "vendor/*"
+  ]
+}

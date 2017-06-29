@@ -1,0 +1,30 @@
+.user-form {
+    margin: 20px;
+    padding: 20px;
+    display: inline-block;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+    border-radius: 2px;
+}
+
+.user-form > div {
+    display: block !important;
+}
+
+.submit-btn {
+    float: right;
+}
+
+.user-info {
+    display: inline-block;
+    margin: 20px 20px 20px 0;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+    border-radius: 2px;
+}
+
+.user-module-container {
+    display: inline-flex;
+}
+
+.dialog-line {
+    display: block;
+}
