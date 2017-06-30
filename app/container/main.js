@@ -1,15 +1,15 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import http from '../services/http'
-
+import * as userActions from '../actions/usersActions'
 
 import UserSearcher from '../components/userSearcher'
 import UserViewer from '../components/userViewer'
 
-
 class MainContainer extends React.Component {
     static propTypes = {
+        users: React.PropTypes.object.isRequired,
+        userActions: React.PropTypes.object.isRequired
     };
 
     constructor() {
@@ -20,20 +20,17 @@ class MainContainer extends React.Component {
         users: []
     };
 
-    getUserByFullName = (name, lastName, fatherName) => {
-        const self = this;
-        http
-            .getUsersByFullName(name, lastName, fatherName)
-            .done(users => {
-                self.setState({users: users});
-            });
-
-    };
-
     render() {
+        var self = this;
+        this.props.users.users.then(users => {
+            self.setState({
+                users: users
+            });
+        });
+
         return (
             <div className="user-module-container">
-                <UserSearcher getUserByFullName={this.getUserByFullName.bind(this)}/>
+                <UserSearcher userActions={this.props.userActions}/>
                 <UserViewer users={this.state.users}/>
             </div>
         )
@@ -44,7 +41,13 @@ class MainContainer extends React.Component {
 function mapStateToProps(state) {
     return {
         users: state.users
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        userActions: bindActionCreators(userActions, dispatch)
     }
 }
 
-export default connect(mapStateToProps)(MainContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer)

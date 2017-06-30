@@ -10,7 +10,7 @@ class UserSearcher extends React.Component {
     }
 
     static propTypes = {
-        getUserByFullName: React.PropTypes.func.isRequired
+        userActions: React.PropTypes.object.isRequired
     };
 
     state = {
@@ -57,6 +57,10 @@ class UserSearcher extends React.Component {
             [property]: value
         });
     };
+    
+    getUserByFullName = () => {
+        this.props.userActions.getUserByFullName(this.state.name, this.state.lastName, this.state.fatherName)
+    };
 
     render() {
         return (
@@ -88,7 +92,7 @@ class UserSearcher extends React.Component {
 
                     <div>
                         <RaisedButton className="submit-btn"
-                                      onClick={this.props.getUserByFullName.bind(this, this.state.name, this.state.lastName, this.state.fatherName)}>Submit
+                                      onClick={this.getUserByFullName}>Submit
                         </RaisedButton>
                     </div>
 

@@ -1,15 +1,12 @@
-import { createStore } from 'redux'
+import {createStore, compose} from 'redux'
 import rootReducer from './reducers'
 
-export default function configureStore(initialState) {
-    const store = createStore(rootReducer, initialState)
+export default function configureStore() {
+    const finalCreateStore = compose(
+        typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ?
+            window.devToolsExtension() :
+            f => f
+    )(createStore);
 
-    if (module.hot) {
-        module.hot.accept('./reducers', () => {
-            const nextRootReducer = require('./reducers');
-            store.replaceReducer(nextRootReducer)
-        })
-    }
-
-    return store
+    return finalCreateStore(rootReducer)
 }

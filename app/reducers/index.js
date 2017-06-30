@@ -1,18 +1,6 @@
-// import {combineReducers} from 'redux'
-// import counterReducer from './counter'
-//
-// export default combineReducers({
-//     counter: counterReducer
-// })
+import { combineReducers } from 'redux'
+import userSearcherReducer from './userSearcher'
 
-
-
-
-
-const initialState = {
-    users: []
-};
-
-export default function userstate(state = initialState) {
-    return state;
-}
+export default combineReducers({
+    users: userSearcherReducer
+})
