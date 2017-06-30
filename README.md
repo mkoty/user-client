@@ -19,3 +19,4 @@ thats it.
     
 
 Then visit your [`localhost` on port `3333`](http://localhost:3333)
+And try to search by "Sichkar" lastname :)
