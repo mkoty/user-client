@@ -9,7 +9,8 @@ class UserViewer extends React.Component {
     };
 
     static propTypes = {
-        users: React.PropTypes.array.isRequired
+        users: React.PropTypes.array.isRequired,
+        isEmptyRequest: React.PropTypes.bool.isRequired
     };
 
     state = {
@@ -45,7 +46,7 @@ class UserViewer extends React.Component {
         return (
             <div className="user-info">
                 {
-                    this.props.users.length > 0
+                    this.props.users.length > 0 || !this.props.isEmptyRequest
 
                         ? <DataTables
                         height={'auto'}

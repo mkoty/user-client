@@ -12,12 +12,18 @@ export default function users(state = initialState, action) {
             const usersPromise = http
                 .getUsersByFullName(action.name, action.lastName, action.fatherName);
 
+            const isEmptyRequest = action.name === "" && action.lastName === "" && action.fatherName === "";
+            
             return {
                 ...state,
-                users: usersPromise
+                users: usersPromise,
+                isEmptyRequest
             };
 
         default:
-            return state;
+            return {
+                ...state,
+                isEmptyRequest: true
+            };
     }
 }

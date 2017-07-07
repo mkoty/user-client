@@ -31,7 +31,8 @@ class MainContainer extends React.Component {
         return (
             <div className="user-module-container">
                 <UserSearcher userActions={this.props.userActions}/>
-                <UserViewer users={this.state.users}/>
+                <UserViewer users={this.state.users}
+                            isEmptyRequest={this.props.users.isEmptyRequest}/>
             </div>
         )
     }
