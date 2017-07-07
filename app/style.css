@@ -28,3 +28,7 @@
 .dialog-line {
     display: block;
 }
+
+tr {
+    cursor: pointer;
+}
