@@ -25,22 +25,24 @@ class UserSearcher extends React.Component {
 
     handleUpdateInput = (searchProperty, arrayProperty, value) => {
         const self = this;
+        value = value.trim();
+
         if (value.length === 0) {
             self.setState({
                 [arrayProperty]: [],
                 [searchProperty]: value
             });
-        } else if (value.length === 1) {
+        } else if (this.state[searchProperty][0] !== value[0]) {
             let request;
             switch (arrayProperty) {
                 case 'names':
-                    request = http.getNames(value, this.state.lastName, this.state.fatherName);
+                    request = http.getNames(value[0] || '', this.state.lastName, this.state.fatherName);
                     break;
                 case 'lastNames':
-                    request = http.getLastNames(this.state.name, value, this.state.fatherName);
+                    request = http.getLastNames(this.state.name, value[0] || '', this.state.fatherName);
                     break;
                 case 'fatherNames':
-                    request = http.getFatherNames(this.state.name, this.state.lastName, value);
+                    request = http.getFatherNames(this.state.name, this.state.lastName, value[0] || '');
                     break;
             }
             request.done(dataArray => {
@@ -54,7 +56,7 @@ class UserSearcher extends React.Component {
 
     handleNewRequest = (property, value) => {
         this.setState({
-            [property]: value
+            [property]: value.trim()
         });
     };
     
