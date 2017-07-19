@@ -1,17 +1,17 @@
 {
-  "name": "react-redux-webpack-skeleton",
+  "name": "user-client",
   "version": "0.0.1",
   "description": "yet another fancy react-redux-webpack-babel-es6 skeleton",
   "repository": {
     "type": "git",
-    "url": "https://github.com/johdirr/react-redux-webpack-skeleton"
+    "url": "https://github.com/mkoty/user-client"
   },
   "scripts": {
-    "start": "webpack-dev-server --hot --inline --progress --port 3333 --content-base ./app",
+    "start": "webpack-dev-server --hot --inline --progress --port 3333 --open --content-base ./app",
     "build-dev": "webpack --config webpack.config.js",
     "build-prod": "webpack --config webpack.config.production.js"
   },
-  "author": "johdirr <johannes@hauptsache-serioes.de>",
+  "author": "Stepan",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.9.0",
